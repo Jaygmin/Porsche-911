@@ -1,7 +1,5 @@
 @import "tailwindcss";
-@import url("https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard.css");
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
 
 @theme {
