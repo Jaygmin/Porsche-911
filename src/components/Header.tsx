@@ -35,7 +35,7 @@ export default function Header({
         >
           KO
         </button>
-        <span className="hidden sm:block">/</span>
+        <span>/</span>
         <button
           type="button"
           className={currentLang === "en" ? "selected" : ""}
