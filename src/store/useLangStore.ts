@@ -1,30 +1,29 @@
 import i18n from "@/locales/i18n";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { combine, persist } from "zustand/middleware";
 
 type Language = "ko" | "en";
 
-interface LangState {
-  lang: Language;
-  setLang: (lang: Language) => void;
-}
-
-export const useLangStore = create<LangState>()(
+export const useLangStore = create(
   persist(
-    (set) => ({
-      lang: "en",
-      setLang: (lang) => {
-        i18n.changeLanguage(lang);
-        set({ lang });
+    combine(
+      {
+        lang: "en" as Language,
       },
-    }),
+      (set) => ({
+        setLang: (lang: Language) => {
+          i18n.changeLanguage(lang);
+          set({ lang });
+        },
+      }),
+    ),
     {
       name: "LangStore",
-      //   onRehydrateStorage: () => (state) => {
-      //     if (state?.lang) {
-      //       i18n.changeLanguage(state.lang);
-      //     }
-      //   },
+      onRehydrateStorage: () => (state) => {
+        if (state?.lang) {
+          i18n.changeLanguage(state.lang);
+        }
+      },
     },
   ),
 );

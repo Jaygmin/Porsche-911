@@ -1,23 +1,8 @@
-import { useState } from "react";
 import Logo from "@/assets/Logo.svg";
+import { useLangStore } from "@/store/useLangStore";
 
-type Language = "ko" | "en";
-
-interface HeaderProps {
-  defaultLanguage?: Language;
-  onChangeLanguage?: (lang: Language) => void;
-}
-
-export default function Header({
-  defaultLanguage = "en",
-  onChangeLanguage,
-}: HeaderProps) {
-  const [currentLang, setCurrentLang] = useState<Language>(defaultLanguage);
-
-  const handleLangClick = (lang: Language) => {
-    setCurrentLang(lang);
-    onChangeLanguage?.(lang);
-  };
+export default function Header() {
+  const { lang, setLang } = useLangStore();
 
   return (
     <div className="header">
@@ -30,16 +15,16 @@ export default function Header({
       <div className="language-container">
         <button
           type="button"
-          className={currentLang === "ko" ? "selected" : ""}
-          onClick={() => handleLangClick("ko")}
+          className={lang === "ko" ? "selected" : ""}
+          onClick={() => setLang("ko")}
         >
           KO
         </button>
         <span>/</span>
         <button
           type="button"
-          className={currentLang === "en" ? "selected" : ""}
-          onClick={() => handleLangClick("en")}
+          className={lang === "en" ? "selected" : ""}
+          onClick={() => setLang("en")}
         >
           EN
         </button>
