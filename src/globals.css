@@ -14,9 +14,11 @@
   * {
     @apply border-border;
   }
+  html,
   body {
     @apply bg-background text-foreground;
     font-family: "Pretendard", sans-serif;
+    scroll-behavior: smooth;
   }
 }
 
@@ -135,7 +137,7 @@
 }
 
 @utility header {
-  @apply fixed top-0 flex h-16 w-full items-center justify-center px-6 py-5 sm:h-20 sm:px-10;
+  @apply fixed top-0 flex h-16 w-full items-center justify-center bg-white px-6 py-5 sm:h-20 sm:px-10;
 
   .logo-container {
     @apply flex h-full items-center justify-center;
@@ -159,21 +161,70 @@
 }
 
 @utility main-container {
-  @apply mt-16 flex w-full flex-1 bg-[url('./assets/Porsche.png')] bg-cover bg-center bg-no-repeat sm:mt-20 sm:h-[calc(100dvh-5rem)];
+  @apply mt-16 flex w-full flex-1 bg-[url('./assets/Background.png')] bg-cover bg-center bg-no-repeat sm:mt-20 sm:h-[calc(100dvh-5rem)];
 
   .title-wrapper {
-    @apply flex w-full flex-col items-center justify-center sm:mt-32 sm:ml-16 sm:items-start sm:justify-start sm:space-y-1.5;
+    @apply flex w-full flex-col items-center justify-center px-4 sm:mt-32 sm:ml-16 sm:items-start sm:justify-start sm:space-y-1.5 sm:px-0;
 
     .title {
-      @apply text-4xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl;
+      @apply text-3xl font-semibold tracking-tight text-white sm:text-6xl md:text-7xl;
     }
 
     .subtitle {
-      @apply text-xl font-normal tracking-tight text-white md:text-3xl;
+      @apply text-lg font-normal tracking-tight text-white sm:text-xl md:text-3xl;
     }
   }
 
   .button-wrapper {
     @apply bottom-10 left-1/2 mt-4 flex items-center justify-center md:absolute md:right-1/2;
+  }
+}
+
+@utility second-container {
+  @apply mt-14 flex min-h-[520px] w-full flex-col items-center justify-between px-6 sm:mt-0 sm:flex-row sm:pt-8 md:p-16;
+
+  .left-items {
+    @apply flex w-full flex-col items-start space-y-7;
+
+    .left-title-wrapper {
+      @apply flex w-full flex-col justify-start gap-3;
+
+      .left-title {
+        @apply text-2xl leading-tight font-bold text-[#0c0c0c] sm:text-3xl sm:leading-5;
+      }
+
+      .left-subtitle {
+        @apply text-sm font-light text-[#0c0c0c] sm:text-base;
+
+        strong {
+          @apply font-medium;
+        }
+      }
+    }
+    .info-wrapper {
+      @apply flex h-fit w-full flex-row flex-wrap gap-4 sm:flex-nowrap sm:gap-0 sm:space-x-8 md:flex-row;
+
+      .info {
+        @apply flex w-full max-w-[180px] flex-col justify-start gap-2.5 sm:max-w-[204px];
+
+        .info-title {
+          @apply text-lg font-bold tracking-tight text-[#0c0c0c] sm:text-xl;
+        }
+
+        .info-subtitle {
+          @apply text-sm font-light text-[#0c0c0c];
+        }
+      }
+    }
+    Button > p {
+      @apply font-normal;
+    }
+  }
+  .right-items {
+    @apply flex h-full w-fit max-w-full items-end justify-end;
+
+    img {
+      @apply w-fit md:max-w-[640px];
+    }
   }
 }
